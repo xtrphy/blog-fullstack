@@ -1,0 +1,26 @@
+.socialMedia {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.socialMedia div {
+    color: #5168df;
+}
+
+.socialMediaContainer {
+    font-size: 1.35rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.socialMediaContainer a {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.socialMediaContainer a:hover {
+    color: gray;
+    transform: scale(1.075);
+}

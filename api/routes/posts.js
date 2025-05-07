@@ -1,0 +1,47 @@
+const express = require('express');
+const prisma = require('../../prisma/client');
+
+const router = express.Router();
+
+router.get('/', async (req, res) => {
+    try {
+        const posts = await prisma.post.findMany({
+            where: {
+                author: {
+                    role: 'ADMIN'
+                }
+            },
+            include: {
+                author: true
+            }
+        });
+        res.status(201).json(posts);
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Error receiving posts' });
+    }
+});
+
+router.post('/', async (req, res) => {
+    const { title, content, authorId } = req.body;
+
+    try {
+        const post = await prisma.post.create({
+            data: {
+                title,
+                content,
+                authorId,
+            }
+        });
+
+        res.status(201).json(post);
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Error creating post' });
+    }
+
+});
+
+module.exports = router;

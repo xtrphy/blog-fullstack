@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
+main {
+    background-color: #f9f9f9;
+    flex: 1;
+}
+
+section {
+    padding: 3rem;
+}
+
+.aboutMe {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.imgContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.5s ease, scale 0.5s ease, box-shadow 0.5s ease;
+}
+
+.imgContainer:hover {
+    transform: rotate(5deg) scale(1.1);
+    box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.fullName {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    font-family: 'Merriweather', sans-serif;
+}
+
+.info {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #777;
+    text-align: center;
+}
+
+.links {
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.links a {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.links a:hover {
+    transform: translate(1.075);
+    color: #aaa;
+}
