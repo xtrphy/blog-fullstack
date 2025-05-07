@@ -1,0 +1,29 @@
+{
+    "name": "blog-fullstack",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start-api": "cd api && node app.js",
+        "start-client": "cd client && npm run dev",
+        "start-admin": "cd admin && npm run dev",
+        "start": "concurrently \"npm run start-api\" \"npm run start-client\" \"npm run start-admin\""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@prisma/client": "^6.7.0",
+        "bcryptjs": "^3.0.2",
+        "concurrently": "^9.1.2",
+        "cors": "^2.8.5",
+        "dotenv": "^16.5.0",
+        "express": "^5.1.0",
+        "jsonwebtoken": "^9.0.2",
+        "prisma": "^6.7.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.10"
+    }
+}
