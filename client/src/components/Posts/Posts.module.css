@@ -1,0 +1,34 @@
+.post {
+    max-width: 50%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.post:hover {
+    transform: scale(1.025);
+    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.2);
+}
+
+.postInfo {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin-bottom: 1rem;
+}
+
+.postImage {
+    max-width: 400px;
+}
+
+.postTitle {
+    font-size: 2rem;
+    font-family: 'Merriweather', sans-serif;
+    margin: 12px 0;
+}
+
+.postSubtitle {
+    color: #777;
+}

@@ -1,6 +1,9 @@
 import React from 'react';
 
 import { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faClock, faCalendar } from '@fortawesome/free-regular-svg-icons';
+import styles from './Posts.module.css';
 
 const Posts = () => {
     const [posts, setPosts] = useState([]);
@@ -10,7 +13,6 @@ const Posts = () => {
         fetch('/posts')
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setPosts(data);
                 setLoading(false);
             })
@@ -24,11 +26,28 @@ const Posts = () => {
 
     return (
         <>
-            <h2>Featured Post</h2>
-            {posts[0] && (
-                <div className="post">
-                    <h3>{posts[0].title}</h3>
-                    <p>{posts[0].content}</p>
+            {posts.length > 0 && (
+                <div className={styles.post}>
+                    <div className={styles.postInfo}>
+
+                        <div>
+                            <FontAwesomeIcon icon={faCalendar} style={{ color: "#74C0FC", }} /> {new Date(posts[0].createdAt).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'short',
+                                day: 'numeric',
+                            })}
+                        </div>
+
+                        <div>
+                            <FontAwesomeIcon icon={faClock} style={{ color: "#74C0FC", }} /> 03 min read
+                        </div>
+
+                    </div>
+                    <div>
+                        <img className={styles.postImage} src={posts[0].imageUrl ? posts[0].imageUrl : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'} alt={posts[0].title} />
+                        <h3 className={styles.postTitle}>{posts[0].title}</h3>
+                        <p className={styles.postSubtitle}>{posts[0].content}</p>
+                    </div>
                 </div>
             )}
         </>

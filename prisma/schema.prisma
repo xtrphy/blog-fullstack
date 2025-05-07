@@ -27,6 +27,7 @@ model Post {
     id        String    @id @default(uuid())
     title     String
     content   String
+    imageUrl  String?
     published Boolean   @default(false)
     createdAt DateTime  @default(now())
     updatedAt DateTime  @updatedAt

@@ -16,7 +16,8 @@ const Main = () => {
                 <FollowMe />
             </section>
 
-            <section className={styles.featuredPost}>
+            <section className={styles.featuredPostSection}>
+                <h2 className={styles.featuredPost}>Featured post</h2>
                 <Posts />
             </section>
         </main>

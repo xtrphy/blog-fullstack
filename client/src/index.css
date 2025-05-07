@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 /* 1. Use a more-intuitive box-sizing model */
 *,
 *::before,
@@ -70,8 +72,6 @@ h6 {
 
 /* ================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
 body {
     font-family: 'Inter', sans-serif;
 }
@@ -79,5 +79,5 @@ body {
 #root {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
 }
