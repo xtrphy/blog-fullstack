@@ -6,7 +6,27 @@ export default defineConfig({
     plugins: [react()],
     server: {
         proxy: {
-            '/posts': 'http://localhost:3000'
+            '/posts': 'http://localhost:3000',
+            '/login': {
+                target: 'http://localhost:3000',
+                changeOrigin: true,
+                secure: false
+            },
+            '/register': {
+                target: 'http://localhost:3000',
+                changeOrigin: true,
+                secure: false
+            },
+            '/auth-status': {
+                target: 'http://localhost:3000',
+                changeOrigin: true,
+                secure: false,
+                configure: (proxy) => {
+                    proxy.on('proxyReq', (proxyReq) => {
+                        proxyReq.setHeader('Origin', 'http://localhost:5174');
+                    });
+                }
+            }
         }
     }
-})
+});

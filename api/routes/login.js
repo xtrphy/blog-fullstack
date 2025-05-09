@@ -1,9 +1,8 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = process.env.JWT_SECRET;
-
 const prisma = require('../../prisma/client');
+
 const router = express.Router();
 
 router.post('/', async (req, res) => {
@@ -16,22 +15,14 @@ router.post('/', async (req, res) => {
             return res.status(401).json({ message: 'Invalid credentials' });
         }
 
-        const valid = await bcrypt.compare(password, user.password);
+        const isValid = await bcrypt.compare(password, user.password);
 
-        if (!valid) {
+        if (!isValid) {
             return res.status(401).json({ message: 'Invalid credentials' });
         }
 
-        const token = jwt.sign(
-            {
-                userId: user.id,
-                role: user.role,
-            },
-            JWT_SECRET,
-            { expiresIn: '1d' }
-        );
-
-        res.json({ token });
+        const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '1d' });
+        res.json({ token, message: 'Logged In' });
 
     } catch (err) {
         console.error(err);

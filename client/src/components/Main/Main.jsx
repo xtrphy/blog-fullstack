@@ -20,6 +20,15 @@ const Main = () => {
                 <h2 className={styles.featuredPost}>Featured post</h2>
                 <Posts />
             </section>
+
+            <section className={styles.subscribeSection}>
+                <h2 className={styles.subscribeTitle}>Subscribe to new posts</h2>
+                <p className={styles.subscribeSubtitle}>Stay informed when the newest and most relevant posts are published!</p>
+                <div className={styles.inputBox}>
+                    <input className={styles.subscribeInput} type="email" placeholder='Enter your email' />
+                    <button className={styles.subscribeBtn}>Subscribe</button>
+                </div>
+            </section>
         </main>
     );
 };

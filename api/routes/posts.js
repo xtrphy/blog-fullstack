@@ -1,5 +1,6 @@
 const express = require('express');
 const prisma = require('../../prisma/client');
+const { authenticate, verifyAdmin } = require('../middlewares/authMiddleware');
 
 const router = express.Router();
 
@@ -23,7 +24,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
+router.post('/', authenticate, verifyAdmin, async (req, res) => {
     const { title, content, authorId } = req.body;
 
     try {

@@ -78,3 +78,57 @@ section {
     font-size: 2.3rem;
     margin-bottom: 2rem;
 }
+
+.subscribeSection {
+    font-family: 'Merriweather', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+}
+
+.subscribeTitle {
+    font-size: 2.5rem;
+    font-weight: bold;
+    word-spacing: 2.5px;
+    margin-bottom: 0.3rem;
+}
+
+.subscribeSubtitle {
+    font-size: 1.025rem;
+    font-family: 'Inter', sans-serif;
+    color: #777;
+}
+
+.inputBox {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.subscribeInput {
+    font-family: 'Inter', sans-serif;
+    border: none;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+    padding: 14px 32px;
+    width: 350px;
+}
+
+.subscribeBtn {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.925rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #303030;
+    color: white;
+    padding: 14px 32px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.subscribeBtn:hover {
+    background-color: #505050;
+}

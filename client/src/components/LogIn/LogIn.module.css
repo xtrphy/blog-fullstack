@@ -1,0 +1,64 @@
+.authContainer {
+    font-family: 'Merriweather', sans-serif;
+    background-color: #fff;
+    padding: 40px;
+    max-width: 400px;
+    width: 90%;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.authTitle {
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #111;
+}
+
+.authForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.authForm label {
+    font-weight: 300;
+    color: #222;
+}
+
+.authForm input {
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    font-family: inherit;
+    background-color: #fff;
+    color: #000;
+}
+
+.authForm button {
+    padding: 12px;
+    font-weight: 700;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.authForm button:hover {
+    background-color: #333;
+}
+
+.authSwitch {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #444;
+}
+
+.authSwitch a {
+    color: #000;
+    text-decoration: underline;
+}
