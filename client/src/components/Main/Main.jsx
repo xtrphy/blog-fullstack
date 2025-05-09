@@ -1,6 +1,6 @@
 import React from 'react';
 import FollowMe from '../followMe/followMe';
-import Posts from '../Posts/Posts';
+import FeaturedPost from '../FeaturedPost/FeaturedPost';
 import styles from './Main.module.css';
 
 const Main = () => {
@@ -18,7 +18,7 @@ const Main = () => {
 
             <section className={styles.featuredPostSection}>
                 <h2 className={styles.featuredPost}>Featured post</h2>
-                <Posts />
+                <FeaturedPost />
             </section>
 
             <section className={styles.subscribeSection}>

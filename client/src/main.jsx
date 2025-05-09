@@ -6,6 +6,7 @@ import './index.css';
 import LogIn from './components/LogIn/LogIn.jsx';
 import Register from './components/Register/Register.jsx';
 import App from './App.jsx'
+import Posts from './components/Posts/Posts.jsx';
 
 const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
         path: 'register',
         element: <Register />,
     },
+    {
+        path: 'posts',
+        element: <Posts />
+    }
 ]);
 
 createRoot(document.getElementById('root')).render(

@@ -2,7 +2,6 @@ const express = require('express');
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
-const cookieParser = require('cookie-parser');
 
 const { authenticate, verifyAdmin } = require('./middlewares/authMiddleware');
 const registerRouter = require('./routes/register');
@@ -15,7 +14,6 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json());
-app.use(cookieParser());
 
 // Auth
 app.get('/', (req, res) => {

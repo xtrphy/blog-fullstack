@@ -1,0 +1,57 @@
+.post {
+    max-width: 50%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.post:hover {
+    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.2);
+}
+
+.postInfo {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin: 1rem 0;
+}
+
+.postImage {
+    width: 1000px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.postTitle {
+    font-size: 2rem;
+    font-family: 'Merriweather', sans-serif;
+    margin: 10px 0;
+}
+
+.postSubtitle {
+    color: #777;
+}
+
+.postInteractions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.likeBtn,
+.commentBtn {
+    font-size: 1.25rem;
+    color: black;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.likeBtn:hover,
+.commentBtn:hover {
+    transform: scale(1.1);
+    color: #777;
+}

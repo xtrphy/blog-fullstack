@@ -14,11 +14,11 @@ const Header = () => {
 
     return (
         <header>
-            <a href='/' className={styles.logo}>XTRPHY</a>
+            <Link to='/' className={styles.logo}>XTRPHY</Link>
             <div className={styles.absolute}>
                 <nav className={styles.links}>
-                    <a href="/">Home</a>
-                    <a href="/posts">Posts</a>
+                    <Link to='/'>Home</Link>
+                    <Link to='/posts'>Posts</Link>
                     <a href="/about">About me</a>
                     <a href="/contact">Contact</a>
                 </nav>
