@@ -41,25 +41,28 @@ const Register = () => {
     };
 
     return (
-        <div className={styles.authContainer}>
-            <h1 className={styles.authTitle}>Create Account</h1>
-            {error && <p className={styles.error}>{error}</p>}
-            <form className={styles.authForm} onSubmit={handleSubmit}>
-                <label htmlFor="username">Username</label>
-                <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
+        <div className={styles.container}>
+            <Link className={styles.cancel} to='/'>&times;</Link>
+            <div className={styles.authContainer}>
+                <h1 className={styles.authTitle}>Create Account</h1>
+                {error && <p className={styles.error}>{error}</p>}
+                <form className={styles.authForm} onSubmit={handleSubmit}>
+                    <label htmlFor="username">Username</label>
+                    <input type="text" id="username" value={username} onChange={(e) => setUsername(e.target.value)} required />
 
-                <label htmlFor="email">Email</label>
-                <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                    <label htmlFor="email">Email</label>
+                    <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
 
-                <label htmlFor="password">Password</label>
-                <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                    <label htmlFor="password">Password</label>
+                    <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
 
-                <label htmlFor="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+                    <label htmlFor="confirm-password">Confirm Password</label>
+                    <input type="password" id="confirm-password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
 
-                <button type="submit">Register</button>
-            </form>
-            <p className={styles.authSwitch}>Already have an account? <Link to="/login">Log in</Link></p>
+                    <button type="submit">Register</button>
+                </form>
+                <p className={styles.authSwitch}>Already have an account? <Link to="/login">Log in</Link></p>
+            </div>
         </div>
     );
 };

@@ -31,19 +31,22 @@ const LogIn = () => {
     }
 
     return (
-        <div className={styles.authContainer}>
-            <h1 className={styles.authTitle}>Welcome Back</h1>
-            <form className={styles.authForm} onSubmit={handleSubmit}>
-                <label htmlFor='text'>Username</label>
-                <input type="text" id="text" onChange={e => setUsername(e.target.value)} value={username} required />
+        <div className={styles.container}>
+            <Link className={styles.cancel} to='/'>&times;</Link>
+            <div className={styles.authContainer}>
+                <h1 className={styles.authTitle}>Welcome Back</h1>
+                <form className={styles.authForm} onSubmit={handleSubmit}>
+                    <label htmlFor='text'>Username</label>
+                    <input type="text" id="text" onChange={e => setUsername(e.target.value)} value={username} required />
 
-                <label htmlFor="password">Password</label>
-                <input type="password" id="password" onChange={e => setPassword(e.target.value)} value={password} required />
+                    <label htmlFor="password">Password</label>
+                    <input type="password" id="password" onChange={e => setPassword(e.target.value)} value={password} required />
 
-                <button type="submit">Log In</button>
-                <p>{message}</p>
-            </form>
-            <p className={styles.authSwitch}>Don't have an account? <Link to='/register'>Register</Link></p>
+                    <button type="submit">Log In</button>
+                    <p>{message}</p>
+                </form>
+                <p className={styles.authSwitch}>Don't have an account? <Link to='/register'>Register</Link></p>
+            </div>
         </div>
     );
 };
