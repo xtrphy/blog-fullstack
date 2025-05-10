@@ -7,6 +7,7 @@ export default defineConfig({
     server: {
         proxy: {
             '/posts': 'http://localhost:3000',
+            '/post': 'http://localhost:3000',
             '/login': {
                 target: 'http://localhost:3000',
                 changeOrigin: true,

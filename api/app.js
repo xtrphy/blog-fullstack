@@ -1,12 +1,12 @@
 const express = require('express');
 require('dotenv').config();
-const jwt = require('jsonwebtoken');
 const cors = require('cors');
 
 const { authenticate, verifyAdmin } = require('./middlewares/authMiddleware');
 const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
 const postsRouter = require('./routes/posts');
+const postRouter = require('./routes/post');
 
 const app = express();
 app.use(cors({
@@ -15,19 +15,17 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// Auth
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
 
+// Verify Token
 app.use('/auth-status', authenticate);
 
+// Auth
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
-// app.use('/logout', logoutRouter);
 
 // Posts
 app.use('/posts', postsRouter);
+app.use('/post', postRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));

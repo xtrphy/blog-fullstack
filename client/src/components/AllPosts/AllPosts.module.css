@@ -1,6 +1,23 @@
+.allPosts {
+    flex: 1;
+}
+
+.allPostsTitle {
+    font-family: 'Merriweather', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.postsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+
 .post {
+    max-width: 600px;
     text-decoration: none;
-    max-width: 50%;
     color: black;
     background-color: #fff;
     border-radius: 8px;
@@ -21,8 +38,7 @@
 }
 
 .postImage {
-    width: 1000px;
-    height: 400px;
+    min-height: 300px;
     object-fit: contain;
     border-radius: 5px;
 }
@@ -33,28 +49,23 @@
     margin: 10px 0;
 }
 
-.postSubtitle {
-    color: #777;
-}
-
-.postInteractions {
+.tags {
+    margin-top: 2rem;
     display: flex;
-    align-items: center;
+    justify-content: flex-end;
     gap: 1rem;
-    margin-top: 1rem;
-    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.likeBtn,
-.commentBtn {
-    font-size: 1.25rem;
-    color: black;
+.tag {
+    font-size: 0.8rem;
+    background-color: lightgray;
+    color: rgb(100, 100, 100);
+    border-radius: 5px;
+    padding: 0.25rem 0.5rem;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: color 0.3s ease;
 }
 
-.likeBtn:hover,
-.commentBtn:hover {
-    transform: scale(1.1);
-    color: #777;
+.tag:hover {
+    color: black;
 }

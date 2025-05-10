@@ -7,6 +7,7 @@ import LogIn from './components/LogIn/LogIn.jsx';
 import Register from './components/Register/Register.jsx';
 import App from './App.jsx'
 import Posts from './components/Posts/Posts.jsx';
+import PostPage from './components/PostPage/PostPage.jsx';
 
 const router = createBrowserRouter([
     {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
     {
         path: 'posts',
         element: <Posts />
+    },
+    {
+        path: 'post/:id',
+        element: <PostPage />
     }
 ]);
 

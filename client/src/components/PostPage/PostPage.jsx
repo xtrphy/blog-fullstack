@@ -1,41 +1,45 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock, faCalendar, faMessage, faHeart } from '@fortawesome/free-regular-svg-icons';
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+import styles from './PostPage.module.css';
 
-import styles from './FeaturedPost.module.css';
-
-const FeaturedPost = () => {
-    const [posts, setPosts] = useState([]);
+const PostPage = () => {
+    const [post, setPost] = useState({});
     const [loading, setLoading] = useState(true);
 
+    const { id } = useParams();
+
     useEffect(() => {
-        fetch('/posts')
+        fetch(`/post/${id}`)
             .then(res => res.json())
             .then(data => {
-                setPosts(data);
+                setPost(data);
                 setLoading(false);
             })
             .catch(err => {
-                console.error('Error loading posts', err);
+                console.error('Error loading post', err);
                 setLoading(false);
-            });
-    }, []);
+            })
+    }, [id])
 
     if (loading) return <p>Loading...</p>;
 
     return (
         <>
-            {posts.length > 0 && (
-                <Link to={`post/${posts[0].id}`} className={styles.post}>
+            <Header />
+            <main className={styles.main}>
+                <div className={styles.post} key={post.id}>
 
-                    <img className={styles.postImage} src={posts[0].imageUrl ? posts[0].imageUrl : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'} alt={posts[0].title} />
+                    <img className={styles.postImage} src={post.imageUrl ? post.imageUrl : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'} alt={post.title} />
 
                     <div className={styles.postInfo}>
 
                         <div className={styles.calendarSVG}>
-                            <FontAwesomeIcon icon={faCalendar} style={{ color: "#74C0FC", }} /> {new Date(posts[0].createdAt).toLocaleDateString('en-US', {
+                            <FontAwesomeIcon icon={faCalendar} style={{ color: "#74C0FC", }} /> {new Date(post.createdAt).toLocaleDateString('en-US', {
                                 year: 'numeric',
                                 month: 'short',
                                 day: 'numeric',
@@ -48,17 +52,24 @@ const FeaturedPost = () => {
 
                     </div>
 
-                    <h3 className={styles.postTitle}>{posts[0].title}</h3>
-                    <p className={styles.postSubtitle}>{posts[0].content.slice(0, 100)}...</p>
+                    <h3 className={styles.postTitle}>{post.title}</h3>
+                    <p className={styles.postSubtitle}>{post.content}</p>
 
                     <div className={styles.postInteractions}>
                         <FontAwesomeIcon icon={faHeart} className={styles.likeBtn} />
                         <FontAwesomeIcon icon={faMessage} className={styles.commentBtn} />
                     </div>
-                </Link>
-            )}
+
+                    <div className={styles.tags}>
+                        {post.tags.map((tag, index) => (
+                            <span className={styles.tag} key={index}>{tag}</span>
+                        ))}
+                    </div>
+                </div>
+            </main>
+            <Footer />
         </>
     );
 };
 
-export default FeaturedPost;
+export default PostPage;

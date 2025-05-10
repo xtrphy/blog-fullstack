@@ -1,16 +1,16 @@
-.post {
-    text-decoration: none;
-    max-width: 50%;
-    color: black;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.15);
-    padding: 2rem;
-    transition: box-shadow 0.3s ease;
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.post:hover {
-    box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.2);
+.post {
+    margin: 2rem;
+    max-width: 1000px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    transition: box-shadow 0.3s ease;
 }
 
 .postInfo {
@@ -57,4 +57,25 @@
 .commentBtn:hover {
     transform: scale(1.1);
     color: #777;
+}
+
+.tags {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.tag {
+    font-size: 0.8rem;
+    background-color: lightgray;
+    color: rgb(100, 100, 100);
+    border-radius: 5px;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.tag:hover {
+    color: black;
 }
