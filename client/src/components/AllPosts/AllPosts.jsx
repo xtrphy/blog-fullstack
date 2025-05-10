@@ -10,7 +10,7 @@ const AllPosts = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/posts')
+        fetch('/api/posts')
             .then(res => res.json())
             .then(data => {
                 setPosts(data);

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock, faCalendar, faMessage, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Header from '../Header/Header';
@@ -8,13 +9,14 @@ import Footer from '../Footer/Footer';
 import styles from './PostPage.module.css';
 
 const PostPage = () => {
+    const { isAuthenticated, user, logout } = useAuth();
     const [post, setPost] = useState({});
     const [loading, setLoading] = useState(true);
 
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`/post/${id}`)
+        fetch(`/api/post/${id}`)
             .then(res => res.json())
             .then(data => {
                 setPost(data);
@@ -58,6 +60,21 @@ const PostPage = () => {
                     <div className={styles.postInteractions}>
                         <FontAwesomeIcon icon={faHeart} className={styles.likeBtn} />
                         <FontAwesomeIcon icon={faMessage} className={styles.commentBtn} />
+                    </div>
+
+                    {isAuthenticated ? (
+                        <textarea placeholder='Write a comment...'></textarea>
+                    ) : (
+                        <p>Please <Link to='/login'>log in</Link> to write comments</p>
+                    )}
+
+                    <div className={styles.commentsContainer}>
+                        {post.comments.map((comment) => (
+                            <div className={styles.comment} key={comment.id}>
+                                <img className={styles.userLogo} src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="" />
+                                <p>{comment.user.username}: {comment.content}</p>
+                            </div>
+                        ))}
                     </div>
 
                     <div className={styles.tags}>

@@ -1,34 +1,41 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
-export const AuthContext = createContext();
+const AuthContext = createContext();
 
-export const AuthProvider = ({ children }) => {
-    const [loggedIn, setLoggedIn] = useState(false);
-
-    const checkAuthStatus = async () => {
-        try {
-            const token = localStorage.getItem('token');
-            const res = await fetch('/auth-status', {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
-            const data = await res.json();
-            setLoggedIn(data.loggedIn);
-        } catch {
-            setLoggedIn(false);
-        }
-    };
+export function AuthProvider({ children }) {
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
-        checkAuthStatus();
-    }, [])
+        const token = localStorage.getItem('token');
+        if (token) {
+            setIsAuthenticated(true);
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            setIsAuthenticated(true);
+            setUser({ id: payload.userId, role: payload.role });
+        }
+    }, []);
+
+    const login = (token) => {
+        localStorage.setItem('token', token);
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        setIsAuthenticated(true);
+        setUser({ id: payload.userId, role: payload.role });
+    };
+
+    const logout = () => {
+        localStorage.removeItem('token');
+        setIsAuthenticated(false);
+        setUser(null);
+    };
 
     return (
-        <AuthContext.Provider value={{ loggedIn, setLoggedIn, checkAuthStatus }}>
+        <AuthContext.Provider value={{ isAuthenticated, user, login, logout }}>
             {children}
         </AuthContext.Provider>
     );
-};
+}
 
-export default AuthProvider;
+export function useAuth() {
+    return useContext(AuthContext);
+}

@@ -2,7 +2,7 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 
-const { authenticate, verifyAdmin } = require('./middlewares/authMiddleware');
+const authenticateToken = require('./middlewares/authMiddleware');
 const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
 const postsRouter = require('./routes/posts');
@@ -17,15 +17,17 @@ app.use(express.json());
 
 
 // Verify Token
-app.use('/auth-status', authenticate);
+app.use('/auth-status', authenticateToken, (req, res) => {
+    res.json({ message: 'Private data', user: req.user });
+});
 
 // Auth
-app.use('/register', registerRouter);
-app.use('/login', loginRouter);
+app.use('/api/register', registerRouter);
+app.use('/api/login', loginRouter);
 
 // Posts
-app.use('/posts', postsRouter);
-app.use('/post', postRouter);
+app.use('/api/posts', postsRouter);
+app.use('/api/post', postRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));

@@ -1,16 +1,10 @@
 import React from 'react';
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
-import { AuthContext } from '../../context/AuthContext.jsx';
+import { useAuth } from '../../context/AuthContext';
 
 const Header = () => {
-    const { loggedIn, setLoggedIn } = useContext(AuthContext);
-
-    const logout = () => {
-        localStorage.removeItem('token');
-        setLoggedIn(false);
-    }
+    const { isAuthenticated, user, logout } = useAuth();
 
     return (
         <header>
@@ -23,10 +17,10 @@ const Header = () => {
                     <a href="/contact">Contact</a>
                 </nav>
             </div>
-            {loggedIn ? (
+            {isAuthenticated ? (
                 <Link className={styles.logoutLink} onClick={logout}>Log Out</Link>
             ) : (
-                <Link to='login' className={styles.logInBtn}>Log In</Link>
+                <Link to='/login' className={styles.logInBtn}>Log In</Link>
             )}
         </header>
     );

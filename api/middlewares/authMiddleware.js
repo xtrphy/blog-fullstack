@@ -1,23 +1,21 @@
-function authenticate(req, res, next) {
+const jwt = require('jsonwebtoken');
+
+function authenticateToken(req, res, next) {
     const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1];
 
-    if (!authHeader) return res.json({ loggedIn: false });
-
-    const token = authHeader.split(' ')[1];
-
-    try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        res.json({ loggedIn: true, user: decoded });
-    } catch (err) {
-        res.json({ loggedIn: false });
+    if (!token) {
+        return res.status(401).json({ message: 'Token not found' });
     }
-};
 
-function verifyAdmin(req, res, next) {
-    if (req.user.role !== 'ADMIN') {
-        return res.status(403).json({ error: 'Forbidden: admin only' });
-    }
-    next();
-};
+    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+        if (err) {
+            return res.status(403).json({ message: 'Invalid token' });
+        }
 
-module.exports = { authenticate, verifyAdmin };
+        req.user = user;
+        next();
+    });
+}
+
+module.exports = authenticateToken;
