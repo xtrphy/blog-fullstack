@@ -6,27 +6,37 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock, faCalendar, faMessage, faHeart } from '@fortawesome/free-regular-svg-icons';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
+import CommentForm from '../CommentForm/CommentForm';
 import styles from './PostPage.module.css';
 
 const PostPage = () => {
-    const { isAuthenticated, user, logout } = useAuth();
-    const [post, setPost] = useState({});
+    const { isAuthenticated } = useAuth();
+    const [post, setPost] = useState({ comments: [] });
+    const [commentTrigger, setCommentTrigger] = useState(0);
     const [loading, setLoading] = useState(true);
 
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`/api/post/${id}`)
-            .then(res => res.json())
-            .then(data => {
+        const fetchPost = async () => {
+            setLoading(true);
+            try {
+                const res = await fetch(`/api/post/${id}`);
+                const data = await res.json();
                 setPost(data);
-                setLoading(false);
-            })
-            .catch(err => {
+            } catch (err) {
                 console.error('Error loading post', err);
+            } finally {
                 setLoading(false);
-            })
-    }, [id])
+            }
+        };
+        fetchPost();
+    }, [id, commentTrigger])
+
+    const handleCommentAdded = () => {
+        console.log('CALL');
+        setCommentTrigger((prev) => prev + 1);
+    };
 
     if (loading) return <p>Loading...</p>;
 
@@ -34,7 +44,7 @@ const PostPage = () => {
         <>
             <Header />
             <main className={styles.main}>
-                <div className={styles.post} key={post.id}>
+                <div className={styles.post} key={id}>
 
                     <img className={styles.postImage} src={post.imageUrl ? post.imageUrl : 'https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'} alt={post.title} />
 
@@ -63,7 +73,7 @@ const PostPage = () => {
                     </div>
 
                     {isAuthenticated ? (
-                        <textarea placeholder='Write a comment...'></textarea>
+                        <CommentForm postId={id} onCommentAdded={handleCommentAdded} />
                     ) : (
                         <p>Please <Link to='/login'>log in</Link> to write comments</p>
                     )}
@@ -82,8 +92,8 @@ const PostPage = () => {
                             <span className={styles.tag} key={index}>{tag}</span>
                         ))}
                     </div>
-                </div>
-            </main>
+                </div >
+            </main >
             <Footer />
         </>
     );

@@ -1,0 +1,19 @@
+.commentForm {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sendCommentBtn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.sendCommentBtn:hover {
+    background-color: #333;
+}

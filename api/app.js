@@ -22,12 +22,12 @@ app.use('/auth-status', authenticateToken, (req, res) => {
 });
 
 // Auth
-app.use('/api/register', registerRouter);
-app.use('/api/login', loginRouter);
+app.use('/register', registerRouter);
+app.use('/login', loginRouter);
 
 // Posts
-app.use('/api/posts', postsRouter);
-app.use('/api/post', postRouter);
+app.use('/posts', postsRouter);
+app.use('/post', postRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));

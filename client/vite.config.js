@@ -6,17 +6,11 @@ export default defineConfig({
     plugins: [react()],
     server: {
         proxy: {
-            '/api/posts': 'http://localhost:3000',
-            '/api/post': 'http://localhost:3000',
-            '/api/login': {
+            '/api': {
                 target: 'http://localhost:3000',
                 changeOrigin: true,
-                secure: false
-            },
-            '/api/register': {
-                target: 'http://localhost:3000',
-                changeOrigin: true,
-                secure: false
+                secure: false,
+                rewrite: (path) => path.replace(/^\/api/, ''),
             },
             '/auth-status': {
                 target: 'http://localhost:3000',
@@ -26,8 +20,8 @@ export default defineConfig({
                     proxy.on('proxyReq', (proxyReq) => {
                         proxyReq.setHeader('Origin', 'http://localhost:5174');
                     });
-                }
-            }
+                },
+            },
         }
     }
 });
