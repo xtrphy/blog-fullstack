@@ -1,5 +1,5 @@
 import React from 'react';
-import FollowMe from '../followMe/followMe';
+import FollowMe from '../FollowMe/FollowMe';
 import FeaturedPost from '../FeaturedPost/FeaturedPost';
 import styles from './Main.module.css';
 
