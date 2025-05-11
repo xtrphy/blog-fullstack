@@ -1,4 +1,3 @@
-import { PrismaClient } from "@prisma/client";
 const prisma = require('./client');
 
 async function main() {
