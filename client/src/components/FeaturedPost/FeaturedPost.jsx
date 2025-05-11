@@ -11,7 +11,7 @@ const FeaturedPost = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/api/posts')
+        fetch('https://blog-fullstack-phc4.onrender.com/posts')
             .then(res => res.json())
             .then(data => {
                 setPosts(data);

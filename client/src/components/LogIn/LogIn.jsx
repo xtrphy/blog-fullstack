@@ -13,7 +13,7 @@ const LogIn = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const res = await fetch('/api/login', {
+        const res = await fetch('https://blog-fullstack-phc4.onrender.com/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })

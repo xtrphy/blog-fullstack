@@ -20,7 +20,7 @@ const PostPage = () => {
         const fetchPost = async () => {
             setLoading(true);
             try {
-                const res = await fetch(`/api/post/${id}`);
+                const res = await fetch(`https://blog-fullstack-phc4.onrender.com/post/${id}`);
                 const data = await res.json();
                 setPost(data);
             } catch (err) {

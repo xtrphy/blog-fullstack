@@ -10,7 +10,7 @@ const CommentForm = ({ postId, onCommentAdded }) => {
         const token = localStorage.getItem('token');
 
         try {
-            const response = await fetch(`/api/post/${postId}/comments`, {
+            const response = await fetch(`https://blog-fullstack-phc4.onrender.com/post/${postId}/comments`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
