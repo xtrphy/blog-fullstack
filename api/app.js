@@ -11,7 +11,6 @@ const postRouter = require('./routes/post');
 const app = express();
 
 const allowedOrigins = [
-    'http://localhost:5173',
     'https://resonant-starship-05112e.netlify.app'
 ];
 

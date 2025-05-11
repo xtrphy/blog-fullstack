@@ -26,7 +26,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.post('/:id/comments', authenticateToken, checkIfAdmin, async (req, res) => {
+router.post('/:id/comments', authenticateToken, async (req, res) => {
     const { content } = req.body;
     const { id } = req.params;
     try {
