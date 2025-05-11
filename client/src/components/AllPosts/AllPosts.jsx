@@ -36,7 +36,7 @@ const AllPosts = () => {
                         <div className={styles.postInfo}>
 
                             <div className={styles.calendarSVG}>
-                                <FontAwesomeIcon icon={faCalendar} style={{ color: "#74C0FC", }} /> {new Date(posts[0].createdAt).toLocaleDateString('en-US', {
+                                <FontAwesomeIcon icon={faCalendar} style={{ color: "#74C0FC", }} /> {new Date(post.createdAt).toLocaleDateString('en-US', {
                                     year: 'numeric',
                                     month: 'short',
                                     day: 'numeric',

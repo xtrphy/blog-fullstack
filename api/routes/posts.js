@@ -10,7 +10,8 @@ router.get('/', async (req, res) => {
             where: {
                 author: {
                     role: 'ADMIN'
-                }
+                },
+                published: true,
             },
             include: {
                 author: true
