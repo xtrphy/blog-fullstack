@@ -2,11 +2,13 @@ const prisma = require('./client');
 require('dotenv').config();
 
 async function main() {
-    const admin = await prisma.user.create({
-        data: {
+    const admin = await prisma.user.upsert({
+        where: { username: process.env.USERNAME },
+        create: {
             username: process.env.USERNAME,
             password: process.env.PASSWORD,
             email: process.env.EMAIL,
+            role: 'ADMIN',
         },
     });
 
@@ -29,6 +31,7 @@ async function main() {
                 tags: ['Frontend', 'React', 'Web Development']
             },
         ],
+        skipDuplicates: true,
     });
 }
 
