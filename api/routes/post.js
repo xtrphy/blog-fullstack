@@ -2,6 +2,7 @@ const express = require('express');
 const prisma = require('../../prisma/client');
 const router = express.Router();
 const authenticateToken = require('../middlewares/authMiddleware');
+const checkIfAdmin = require('../middlewares/adminMiddleware');
 
 router.get('/:id', async (req, res) => {
     const { id } = req.params
@@ -25,7 +26,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.post('/:id/comments', authenticateToken, async (req, res) => {
+router.post('/:id/comments', authenticateToken, checkIfAdmin, async (req, res) => {
     const { content } = req.body;
     const { id } = req.params;
     try {
@@ -56,6 +57,14 @@ router.post('/:id/comments', authenticateToken, async (req, res) => {
         console.error(err);
         res.status(500).json({ message: 'Error creating comment' });
     }
+});
+
+router.delete('/:id', authenticateToken, checkIfAdmin, (req, res) => {
+    prisma.post.delete({
+        where: {
+            id
+        }
+    })
 });
 
 module.exports = router;

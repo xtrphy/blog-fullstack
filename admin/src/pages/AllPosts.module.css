@@ -1,0 +1,26 @@
+body {
+    font-family: 'Merriweather', sans-serif;
+}
+
+.mainAdmin {
+    padding: 2rem;
+    flex: 1;
+}
+
+.allPostsTitle {
+    font-family: 'Merriweather', sans-serif;
+}
+
+.posts {
+    width: fit-content;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.post {
+    display: flex;
+    align-items: center;
+}
