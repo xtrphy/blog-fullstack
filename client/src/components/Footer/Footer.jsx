@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Footer.module.css';
-import FollowMe from '../followMe/followMe';
+import FollowMe from '../FollowMe/FollowMe';
 
 const Footer = () => {
     return (
