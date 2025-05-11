@@ -2,6 +2,22 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 
+const allowedOrigins = [
+    'http://localhost:5173',
+    'https://resonant-starship-05112e.netlify.app'
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true
+}));
+
 const authenticateToken = require('./middlewares/authMiddleware');
 const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');

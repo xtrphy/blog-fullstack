@@ -10,6 +10,9 @@
         "start-admin": "cd admin && npm run dev",
         "start": "concurrently \"npm run start-api\" \"npm run start-client\" \"npm run start-admin\""
     },
+    "prisma": {
+        "seed": "node prisma/seed.js"
+    },
     "keywords": [],
     "author": "",
     "license": "ISC",
