@@ -8,9 +8,6 @@ router.get('/', async (req, res) => {
     try {
         const posts = await prisma.post.findMany({
             where: {
-                author: {
-                    role: 'ADMIN'
-                },
                 published: true,
             },
             include: {
