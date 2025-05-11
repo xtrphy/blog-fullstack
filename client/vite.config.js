@@ -7,13 +7,13 @@ export default defineConfig({
     server: {
         proxy: {
             '/api': {
-                target: 'http://localhost:3000',
+                target: 'https://blog-fullstack-phc4.onrender.com',
                 changeOrigin: true,
                 secure: false,
                 rewrite: (path) => path.replace(/^\/api/, ''),
             },
             '/auth-status': {
-                target: 'http://localhost:3000',
+                target: 'https://blog-fullstack-phc4.onrender.com',
                 changeOrigin: true,
                 secure: false,
                 configure: (proxy) => {
