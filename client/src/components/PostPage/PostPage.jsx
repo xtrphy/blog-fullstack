@@ -12,7 +12,6 @@ import styles from './PostPage.module.css';
 const PostPage = () => {
     const { isAuthenticated } = useAuth();
     const [post, setPost] = useState({ comments: [] });
-    const [commentTrigger, setCommentTrigger] = useState(0);
     const [loading, setLoading] = useState(true);
 
     const { id } = useParams();
@@ -31,11 +30,13 @@ const PostPage = () => {
             }
         };
         fetchPost();
-    }, [id, commentTrigger])
+    }, [id])
 
-    const handleCommentAdded = () => {
-        console.log('CALL');
-        setCommentTrigger((prev) => prev + 1);
+    const handleCommentAdded = (newComment) => {
+        setPost(prevPost => ({
+            ...prevPost,
+            comments: [...prevPost.comments, newComment]
+        }));
     };
 
     if (loading) return <p>Loading...</p>;

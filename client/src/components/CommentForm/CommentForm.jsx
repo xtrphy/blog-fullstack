@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './CommentForm.module.css';
 
-const CommentForm = ({ postId }) => {
+const CommentForm = ({ postId, onCommentAdded }) => {
     const [content, setContent] = useState('');
 
     const handleSubmit = async (e) => {
@@ -20,7 +20,11 @@ const CommentForm = ({ postId }) => {
             });
 
             if (response.ok) {
+                const newComment = await response.json();
+
                 setContent('');
+
+                onCommentAdded(newComment);
             } else {
                 console.error('Error adding comment', await response.text());
             }

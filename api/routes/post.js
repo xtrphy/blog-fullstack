@@ -44,8 +44,13 @@ router.post('/:id/comments', authenticateToken, async (req, res) => {
                 user: {
                     connect: { id: req.user.id }
                 },
+            },
+            include: {
+                user: true,
             }
-        })
+        });
+
+        res.status(201).json(comment);
 
     } catch (err) {
         console.error(err);
