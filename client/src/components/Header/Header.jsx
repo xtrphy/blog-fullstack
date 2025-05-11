@@ -4,7 +4,7 @@ import styles from './Header.module.css';
 import { useAuth } from '../../context/AuthContext';
 
 const Header = () => {
-    const { isAuthenticated, user, logout } = useAuth();
+    const { isAuthenticated, logout } = useAuth();
 
     return (
         <header>
@@ -13,8 +13,6 @@ const Header = () => {
                 <nav className={styles.links}>
                     <Link to='/'>Home</Link>
                     <Link to='/posts'>Posts</Link>
-                    <a href="/about">About me</a>
-                    <a href="/contact">Contact</a>
                 </nav>
             </div>
             {isAuthenticated ? (

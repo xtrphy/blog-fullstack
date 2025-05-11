@@ -15,8 +15,6 @@ function App() {
             const payload = token.split('.')[1];
             const decoded = JSON.parse(atob(payload));
 
-            console.log(decoded);
-
             if (decoded.role === 'ADMIN') {
                 setIsAdmin(true);
             } else {

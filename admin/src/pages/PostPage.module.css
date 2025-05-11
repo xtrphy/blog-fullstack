@@ -1,0 +1,106 @@
+.main {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cancelBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background-color: lightgray;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.cancelBtn:hover {
+    background-color: gray;
+}
+
+.post {
+    margin: 2rem;
+    max-width: 1000px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.postInfo {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin: 1rem 0;
+}
+
+.postImage {
+    width: 1000px;
+    height: 400px;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.postTitle {
+    font-size: 2rem;
+    font-family: 'Merriweather', sans-serif;
+    margin: 10px 0;
+}
+
+.postSubtitle {
+    color: #777;
+}
+
+.commentsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.comment {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.userLogo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.tags {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+}
+
+.tag {
+    font-size: 0.8rem;
+    background-color: lightgray;
+    color: rgb(100, 100, 100);
+    border-radius: 5px;
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.tag:hover {
+    color: black;
+}
+
+.editingPost {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}

@@ -59,12 +59,4 @@ router.post('/:id/comments', authenticateToken, checkIfAdmin, async (req, res) =
     }
 });
 
-router.delete('/:id', authenticateToken, checkIfAdmin, (req, res) => {
-    prisma.post.delete({
-        where: {
-            id
-        }
-    })
-});
-
 module.exports = router;
