@@ -10,6 +10,7 @@ async function main() {
             password: process.env.PASSWORD,
             email: process.env.EMAIL,
             role: 'ADMIN',
+            role: 'ADMIN',
         },
     });
 
@@ -32,6 +33,7 @@ async function main() {
                 tags: ['Frontend', 'React', 'Web Development']
             },
         ],
+        skipDuplicates: true,
         skipDuplicates: true,
     });
 }
